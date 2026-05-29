@@ -1,6 +1,3 @@
-# STG-CONSESUS
-Sovereign Consensus Infrastructure Protocol 
-
 # STG-CONSENSUS
 
 ## Sovereign Consensus Infrastructure Protocol
