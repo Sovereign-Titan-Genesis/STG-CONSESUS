@@ -1,412 +1,341 @@
-STG P2P Network Specification
+# STG P2P Network Specification (Core Network Layer)
 
-Document Information
-
-Field| Value
-Document Name| p2p-network-spec.md
-Repository| STG-CONSESUS
-Category| STG-SPECS
-Version| P2P-V1-2026
-Status| Foundational Draft
-Classification| Sovereign Network Architecture
+## Document Information
+- System: STG-CONSESUS
+- Module: P2P Network Core
+- Version: P2P-NETWORK-V1-2026
+- Status: Core Infrastructure Layer
 
 ---
 
-1. Purpose
+# 1. Purpose
 
-Dokumen ini mendefinisikan:
+Modul ini mendefinisikan seluruh sistem komunikasi node STG blockchain termasuk:
 
-- peer-to-peer communication,
-- node synchronization,
-- validator propagation,
-- transaction relay,
-- cross-network interoperability,
-- dan sovereign distributed networking architecture.
-
----
-
-2. Network Objectives
-
-Jaringan STG dirancang untuk:
-
-- low-latency communication,
-- validator synchronization,
-- resilient propagation,
-- censorship resistance,
-- interoperability readiness,
-- dan decentralized network sustainability.
+- Peer-to-peer discovery
+- Gossip protocol
+- Block propagation
+- RPC gateway routing
+- Validator communication
+- Cross-chain relay interface
 
 ---
 
-3. Network Principles
+# 2. Network Philosophy
 
-Jaringan wajib:
+STG Network harus:
 
-- decentralized,
-- fault-tolerant,
-- replay-safe,
-- encrypted,
-- validator-compatible,
-- dan consensus-safe.
-
----
-
-4. Network Scope
-
-P2P layer mencakup:
-
-- node discovery,
-- peer synchronization,
-- block propagation,
-- transaction relay,
-- validator messaging,
-- dan interoperability gateways.
+- Fully decentralized
+- Fault tolerant
+- Partition resistant
+- Deterministic sync
+- Low latency propagation
+- Validator-consistent communication
 
 ---
 
-5. Network Restrictions
+# 3. Node Types
 
-Jaringan TIDAK boleh:
+## 3.1 Full Node
+- Menyimpan seluruh state
+- Memvalidasi blok
+- Melayani RPC request
 
-- centralized,
-- validator-exclusive,
-- topology-dependent,
-- single-relay dependent,
-- atau consensus-breaking.
+## 3.2 Validator Node
+- Menghasilkan blok
+- Menandatangani consensus
+- Menjalankan staking logic
 
----
+## 3.3 Archive Node
+- Menyimpan seluruh history blockchain
+- Digunakan untuk audit & forensic
 
-6. Network Architecture
-
-P2P architecture terdiri dari:
-
-- discovery layer,
-- peer registry,
-- relay propagation engine,
-- validator communication bus,
-- synchronization engine,
-- dan interoperability gateway layer.
+## 3.4 Light Node
+- Hanya memverifikasi header
+- Digunakan wallet & mobile apps
 
 ---
 
-7. Node Categories
+# 4. Peer Discovery System
 
-Node STG dapat mencakup:
+Node menemukan peer melalui:
 
-- validator node,
-- archive node,
-- light node,
-- relay node,
-- bridge node,
-- dan observer node.
+- Bootstrap nodes
+- DHT (Distributed Hash Table)
+- Manual seed list
+- Gossip propagation discovery
 
----
+Flow:
 
-8. Peer Discovery
-
-Node discovery wajib mendukung:
-
-- bootnode initialization,
-- decentralized peer discovery,
-- validator synchronization,
-- peer reputation,
-- dan replay-safe peer registration.
+Client Node → Bootstrap → Peer Table → Network Mesh
 
 ---
 
-9. Node Handshake
+# 5. Gossip Protocol
 
-Handshake wajib mencakup:
+Gossip digunakan untuk:
 
-- protocol version,
-- validator identity,
-- chain identifier,
-- capability negotiation,
-- dan encrypted session establishment.
+- Block propagation
+- Transaction broadcast
+- Validator updates
 
----
+Rules:
 
-10. Communication Lifecycle
-
-Node Discovery
-        ↓
-Handshake Verification
-        ↓
-Session Encryption
-        ↓
-Peer Synchronization
-        ↓
-Transaction Relay
-        ↓
-Block Propagation
-        ↓
-Consensus Synchronization
+- Random peer selection
+- TTL-limited propagation
+- Duplicate suppression
+- Signature verification mandatory
 
 ---
 
-11. Transaction Relay
+# 6. Block Propagation Flow
+cat > docs/stg-specs/p2p-network-spec.md << 'EOF'
+# STG P2P Network Specification (Core Network Layer)
 
-Transaction relay wajib:
-
-- deterministic,
-- low-latency,
-- replay-safe,
-- validator-compatible,
-- dan spam-resistant.
-
----
-
-12. Block Propagation
-
-Block propagation wajib memastikan:
-
-- validator synchronization,
-- deterministic ordering,
-- fork mitigation,
-- low propagation delay,
-- dan consensus continuity.
+## Document Information
+- System: STG-CONSESUS
+- Module: P2P Network Core
+- Version: P2P-NETWORK-V1-2026
+- Status: Core Infrastructure Layer
 
 ---
 
-13. Validator Messaging
+# 1. Purpose
 
-Validator messaging digunakan untuk:
+Modul ini mendefinisikan seluruh sistem komunikasi node STG blockchain termasuk:
 
-- consensus synchronization,
-- vote propagation,
-- slashing notification,
-- governance coordination,
-- dan emergency network signaling.
-
----
-
-14. Session Encryption
-
-Seluruh komunikasi node wajib:
-
-- encrypted,
-- replay-protected,
-- validator-authenticated,
-- integrity-verified,
-- dan forward-compatible dengan PQC migration.
+- Peer-to-peer discovery
+- Gossip protocol
+- Block propagation
+- RPC gateway routing
+- Validator communication
+- Cross-chain relay interface
 
 ---
 
-15. Network Replay Protection
+# 2. Network Philosophy
 
-P2P layer wajib melindungi terhadap:
+STG Network harus:
 
-- duplicated packet,
-- replay attack,
-- peer spoofing,
-- validator impersonation,
-- dan synchronization poisoning.
-
----
-
-16. Peer Reputation System
-
-Peer reputation digunakan untuk:
-
-- spam mitigation,
-- malicious node detection,
-- relay prioritization,
-- validator trust scoring,
-- dan synchronization optimization.
+- Fully decentralized
+- Fault tolerant
+- Partition resistant
+- Deterministic sync
+- Low latency propagation
+- Validator-consistent communication
 
 ---
 
-17. Rate Limiting
+# 3. Node Types
 
-Node wajib mendukung:
+## 3.1 Full Node
+- Menyimpan seluruh state
+- Memvalidasi blok
+- Melayani RPC request
 
-- transaction rate limiting,
-- peer request throttling,
-- validator flood protection,
-- dan denial-of-service mitigation.
+## 3.2 Validator Node
+- Menghasilkan blok
+- Menandatangani consensus
+- Menjalankan staking logic
 
----
+## 3.3 Archive Node
+- Menyimpan seluruh history blockchain
+- Digunakan untuk audit & forensic
 
-18. Synchronization Model
-
-Synchronization engine wajib:
-
-- deterministic,
-- resumable,
-- validator-safe,
-- replay-consistent,
-- dan consensus-compatible.
-
----
-
-19. Fork Handling
-
-Jaringan wajib mendukung:
-
-- temporary fork recovery,
-- consensus reconciliation,
-- validator re-synchronization,
-- dan deterministic chain selection.
+## 3.4 Light Node
+- Hanya memverifikasi header
+- Digunakan wallet & mobile apps
 
 ---
 
-20. Interoperability Gateway
+# 4. Peer Discovery System
 
-Gateway interoperabilitas digunakan untuk:
+Node menemukan peer melalui:
 
-- cross-chain communication,
-- external blockchain synchronization,
-- bridge coordination,
-- validator federation extension,
-- dan multi-network messaging.
+- Bootstrap nodes
+- DHT (Distributed Hash Table)
+- Manual seed list
+- Gossip propagation discovery
 
----
+Flow:
 
-21. External Blockchain Compatibility
-
-STG dirancang kompatibel dengan:
-
-- Ethereum-compatible chains,
-- EVM ecosystem,
-- Cosmos-style interoperability,
-- Substrate-compatible messaging,
-- dan future sovereign federation protocols.
+Client Node → Bootstrap → Peer Table → Network Mesh
 
 ---
 
-22. Cross-Chain Messaging
+# 5. Gossip Protocol
 
-Cross-chain messaging wajib:
+Gossip digunakan untuk:
 
-- authenticated,
-- replay-safe,
-- bridge-auditable,
-- validator-verifiable,
-- dan governance-compatible.
+- Block propagation
+- Transaction broadcast
+- Validator updates
 
----
+Rules:
 
-23. Bridge Node Architecture
-
-Bridge node digunakan untuk:
-
-- external chain observation,
-- state verification,
-- asset synchronization,
-- interoperability relay,
-- dan sovereign federation extension.
+- Random peer selection
+- TTL-limited propagation
+- Duplicate suppression
+- Signature verification mandatory
 
 ---
 
-24. Network Auditability
+# 6. Block Propagation Flow
+---
 
-Seluruh aktivitas jaringan wajib:
+# 7. RPC Integration Layer
 
-- traceable,
-- timestamped,
-- replayable,
-- validator-auditable,
-- dan cryptographically verifiable.
+Network menyediakan RPC gateway:
+
+- JSON-RPC (primary)
+- WebSocket (real-time)
+- Internal IPC (node-local)
+
+RPC Gateway terhubung langsung ke P2P layer.
 
 ---
 
-25. AI Network Boundaries
+# 8. Node Synchronization
 
-STG-AI diperbolehkan:
+Sync mode:
 
-- membaca telemetry jaringan,
-- mendeteksi anomaly,
-- memonitor propagation,
-- memberi diagnostics.
+## 8.1 Full Sync
+- Download semua block
 
-STG-AI TIDAK diperbolehkan:
+## 8.2 Fast Sync
+- Download state snapshot
 
-- mengontrol consensus,
-- memodifikasi packet relay,
-- mem-bypass validator authority,
-- atau mengendalikan peer governance.
+## 8.3 Light Sync
+- Verify headers only
 
 ---
 
-26. Network Threat Model
+# 9. Fork Resolution
 
-P2P architecture dirancang untuk memitigasi:
+Jika terjadi fork:
 
-- eclipse attack,
-- sybil attack,
-- routing manipulation,
-- validator isolation,
-- replay poisoning,
-- dan relay centralization.
+1. Bandingkan chain weight
+2. Bandingkan validator stake
+3. Pilih chain dengan finality tertinggi
+4. Reject orphan chain
 
 ---
 
-27. Network Recovery
+# 10. Network Security Model
 
-Jaringan wajib mendukung:
+Proteksi:
 
-- peer recovery,
-- validator rejoin,
-- synchronization recovery,
-- relay failover,
-- dan network partition healing.
-
----
-
-28. Future PQC Migration
-
-Jaringan dirancang mendukung:
-
-- hybrid PQC session encryption,
-- validator key migration,
-- post-quantum handshake,
-- dan long-term sovereign resilience.
+- Sybil attack resistance
+- Peer authentication
+- Signature validation
+- Rate limiting gossip spam
+- Encrypted peer channels
 
 ---
 
-29. Example Peer Handshake
+# 11. Anti Split-Brain Mechanism
 
-{
-  "nodeId": "stg-node-08",
-  "chainId": "STG-MAINNET",
-  "protocolVersion": "1.0.0",
-  "validator": true,
-  "sessionEncryption": "AES-GCM-256",
-  "pqcReady": true
-}
+Jika network terpisah:
+
+- validator checkpoint comparison
+- finality threshold enforcement
+- automatic reconciliation after reconnect
 
 ---
 
-30. Example Cross-Chain Relay
+# 12. Cross-Chain Bridge Hook
 
-{
-  "sourceChain": "STG",
-  "destinationChain": "Ethereum",
-  "bridgeNode": "stg-bridge-02",
-  "messageType": "ASSET_SYNC",
-  "verificationStatus": "VERIFIED"
-}
+P2P layer mendukung:
+
+- External chain message relay
+- Proof verification forwarding
+- Bridge validator relay system
 
 ---
 
-31. Network Philosophy
+# 13. Latency Optimization
 
-Jaringan STG dirancang sebagai:
-
-- sovereign decentralized communication layer,
-- validator synchronization infrastructure,
-- interoperability-ready federation network,
-- dan long-term resilient blockchain communication architecture.
+- Peer scoring system
+- Fast path routing
+- Regional clustering
+- Adaptive gossip radius
 
 ---
 
-32. Status
+# 14. Event Streaming
 
-Dokumen ini merupakan draft spesifikasi jaringan untuk:
+Network events:
 
-- STG node federation,
-- validator communication,
-- block propagation,
-- interoperability gateway,
-- sovereign distributed networking,
-- dan long-term decentralized infrastructure sustainability.
+- NewBlock
+- NewTransaction
+- ValidatorUpdate
+- ForkDetected
+
+---
+
+# 15. AI Monitoring Boundary
+
+STG-AI hanya boleh:
+
+- membaca network metrics
+- mendeteksi anomaly
+- memberikan alert
+
+STG-AI tidak boleh:
+
+- mengubah routing
+- mengubah consensus
+- mengontrol peer selection
+
+---
+
+# 16. Failure Handling
+
+Jika node gagal:
+
+- auto peer replacement
+- gossip reroute
+- retry sync
+- fallback bootstrap node
+
+---
+
+# 17. Network Topology
+
+Model:
+
+- Mesh network (primary)
+- Cluster-based optimization
+- Region-aware propagation
+
+---
+
+# 18. Upgrade Path
+
+- QUIC transport layer
+- libp2p integration
+- quantum-safe encrypted channels
+- decentralized relay routing
+
+---
+
+# 19. Security Guarantees
+
+Network menjamin:
+
+- message authenticity
+- propagation integrity
+- consensus alignment
+- replay protection
+
+---
+
+# 20. Philosophy
+
+P2P Network STG adalah:
+
+> "Sistem saraf digital blockchain yang memastikan setiap node berpikir dan melihat dunia yang sama."
+
+---
+
+# END OF SPEC
