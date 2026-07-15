@@ -1,5 +1,31 @@
 # STG-CONSENSUS
 
+STG-CONSESUS adalah lapisan konsensus untuk ekosistem STG.  
+Fokus utama: **prover**, **validator**, dan **governance hooks**.
+
+## ✨ Fitur Utama
+- Prover module untuk menghasilkan bukti kriptografi (ZK/Fraud proof).
+- Validator set untuk verifikasi bukti dan finalisasi blok.
+- Governance hooks untuk upgrade protokol melalui tata kelola STG.
+- Smart contract Layer-1 untuk finalisasi dan governance.
+
+## 📂 Struktur
+- `prover/` → modul prover & zk_proof.
+- `validator/` → modul validator & governance hooks.
+- `contracts/` → smart contract L1 (finality & governance).
+
+## 🚀 Roadmap
+- v0.1 → Prover internal.
+- v0.2 → Validator publik.
+- v1.0 → Konsensus terdistribusi dengan governance aktif.
+
+## 🔒 Keamanan
+Audit bukti kriptografi & smart contract sebelum mainnet.
+
+## 🤝 Kontribusi
+Lihat [CONTRIBUTING.md](CONTRIBUTING.md).
+
+
 ## Sovereign Consensus Infrastructure Protocol
 
 ---
